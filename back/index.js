@@ -1,4 +1,5 @@
 const AWS = require("aws-sdk");
+const { v4: uuidv4 } = require('uuid');
 
 const dynamo = new AWS.DynamoDB.DocumentClient();
 const idLen = 8;
@@ -24,20 +25,24 @@ exports.handler = async (event) => {
     
     try {
         switch (event.routeKey) {
-            // Create a new game, add it to the database, send back the game ID
+            // Create a new game, add it to the database, send back the game ID and player id
             case "PUT /games":
                 let game_id = genID();
+                let pid = uuidv4();
                 await dynamo
                     .put({
                         TableName: "war-web-db",
                         Item: {
                             game_id: game_id,
                             phase: 0,
-                            state: []
+                            state: [],
+                            pid1: pid,
+                            pid2: null
                         }
                     })
                     .promise();
-                body = game_id;
+                body = {game_id: game_id,
+                        pid: pid};
                 break;
 
             // Push a move or board setup to a game
