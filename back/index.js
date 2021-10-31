@@ -31,7 +31,11 @@ exports.handler = async (event) => {
     let statusCode = 200;
     let pid;
     const headers = {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Headers":"*",
+        "Access-Control-Allow-Origin":"*",
+        "Access-Control-Allow-Methods":"OPTIONS,POST,GET"
+
     };
     
     try {

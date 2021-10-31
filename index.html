@@ -2,9 +2,17 @@
     <head>
         <title>War</title>
         <link rel="stylesheet" href="index.css">
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     </head>
     <body>
-        <canvas id="canvas" width="650" height="650">
+        <canvas id="canvas" width="650" height="650"></canvas>
+        <br/>
+        <input type="button" value="Create Game" id="btnCreate">
+        <span id="lblCreate"></span>
+        <br/>
+        <input type="button" value="Join Game" id="btnJoin">
+        <input type="text" id="txtJoin">
         <script src="index.js"></script>
+        <script src="networking.js"></script>
     </body>
 </html>
